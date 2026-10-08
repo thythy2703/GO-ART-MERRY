@@ -571,11 +571,21 @@ function ParentPortalView() {
   const [formNghiPhep, setFormNghiPhep] = useState({ MaLop: '', NgayNghi: '', LyDo: '' });
 
   useEffect(() => {
-    fetch(`${WEB_APP_URL}?action=getHocVien`).then(res => res.json()).then(data => { if (data.status === 'success') setDsHocVien(data.data); });
-    fetch(`${WEB_APP_URL}?action=getLopHoc`).then(res => res.json()).then(data => { if (data.status === 'success') setDsLop(data.data); });
-    fetch(`${WEB_APP_URL}?action=getHocPhi`).then(res => res.json()).then(data => {
-      if (data.status === 'success') setDsHocPhiCuaBe(data.data.filter(hp: any => hp.MaHV === maHVInput));
-    });
+    fetch(`${WEB_APP_URL}?action=getLopHoc`)
+      .then(res => res.json())
+      .then((data: any) => { if (data.status === 'success') setDsLopVien(data.data); });
+      
+    fetch(`${WEB_APP_URL}?action=getLopHop`)
+      .then(res => res.json())
+      .then((data: any) => { if (data.status === 'success') setDsLop(data.data); });
+      
+    fetch(`${WEB_APP_URL}?action=getHocPhi`)
+      .then(res => res.json())
+      .then((data: any) => { 
+        if (data.status === 'success') {
+          setDsHocPhiCuaBe(data.data.filter((hp: any) => hp.MaHV === maHVInput));
+        }
+      });
   }, [maHVInput]);
 
   useEffect(() => {
