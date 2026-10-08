@@ -573,7 +573,7 @@ function ParentPortalView() {
   useEffect(() => {
     fetch(`${WEB_APP_URL}?action=getLopHoc`)
       .then(res => res.json())
-      .then((data: any) => { if (data.status === 'success') setDsLopVien(data.data); });
+      .then((data: any) => { if (data.status === 'success') setDsHocVien(data.data); });
       
     fetch(`${WEB_APP_URL}?action=getLopHop`)
       .then(res => res.json())
