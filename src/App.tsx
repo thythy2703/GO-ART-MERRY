@@ -70,7 +70,7 @@ export default function App() {
   );
 }
 
-function SidebarItem({ label, active, onClick }) {
+function SidebarItem({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (
     <button 
       onClick={onClick}
