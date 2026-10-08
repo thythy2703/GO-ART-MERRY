@@ -574,7 +574,7 @@ function ParentPortalView() {
     fetch(`${WEB_APP_URL}?action=getHocVien`).then(res => res.json()).then(data => { if (data.status === 'success') setDsHocVien(data.data); });
     fetch(`${WEB_APP_URL}?action=getLopHoc`).then(res => res.json()).then(data => { if (data.status === 'success') setDsLop(data.data); });
     fetch(`${WEB_APP_URL}?action=getHocPhi`).then(res => res.json()).then(data => {
-      if (data.status === 'success') setDsHocPhiCuaBe(data.data.filter(hp => hp.MaHV === maHVInput));
+      if (data.status === 'success') setDsHocPhiCuaBe(data.data.filter(hp: any => hp.MaHV === maHVInput));
     });
   }, [maHVInput]);
 
